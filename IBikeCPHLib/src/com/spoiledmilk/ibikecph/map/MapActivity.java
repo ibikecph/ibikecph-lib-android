@@ -408,7 +408,6 @@ public class MapActivity extends FragmentActivity implements SMHttpRequestListen
                         }
                     }, 200);
 
-                    // new SMHttpRequest().findPlacesForLocation(loc, this);
                 }
                 break;
             case SMHttpRequest.REQUEST_FIND_PLACES_FOR_LOC:
@@ -547,7 +546,7 @@ public class MapActivity extends FragmentActivity implements SMHttpRequestListen
     float newX;
 
     private void translate(float deltaX, final boolean finalAnim) {
-        // mapFragment.mapView.setEnabled(false);
+        
         if (leftMenu != null && leftMenu.getView() != null) {
             newX = posX + deltaX;
             if (slidden) {

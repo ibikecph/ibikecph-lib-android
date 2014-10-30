@@ -33,7 +33,6 @@ import com.spoiledmilk.ibikecph.R;
 import com.spoiledmilk.ibikecph.navigation.SMMyLocationNewOverlay;
 import com.spoiledmilk.ibikecph.navigation.routing_engine.SMLocationListener;
 import com.spoiledmilk.ibikecph.navigation.routing_engine.SMLocationManager;
-import com.spoiledmilk.ibikecph.util.Config;
 import com.spoiledmilk.ibikecph.util.IbikePreferences;
 import com.spoiledmilk.ibikecph.util.LOG;
 import com.spoiledmilk.ibikecph.util.Util;

@@ -66,7 +66,6 @@ public class LoginActivity extends Activity implements FBLoginListener {
         textTitle.setVisibility(View.VISIBLE);
         btnBack = (ImageButton) findViewById(R.id.btnBack);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        // textFacebookLogin = (TextView) findViewById(R.id.textFacebookLogin);
         btnBack.setOnClickListener(new OnClickListener() {
 
             @Override

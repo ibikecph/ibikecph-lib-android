@@ -98,7 +98,6 @@ public class SMMapFragment extends MapFragmentBase implements MapListener, OnMap
     public void onLocationChanged(Location location) {
         LOG.d("SMMapFragment onLocationChanged");
         lastLoc = location;
-        // locationOverlay.onLocationChanged(location, locationOverlay.getMyLocationProvider());
         if (getTrackingMode()) {
             animateMap(location);
         }
@@ -253,7 +252,6 @@ public class SMMapFragment extends MapFragmentBase implements MapListener, OnMap
 
     @Override
     public boolean onDoubleTapZoom() {
-        // getMapActivity().stopTrackingUser();
         return true;
     }
 

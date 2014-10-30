@@ -43,9 +43,7 @@ public class KortforData extends SearchListItem {
 			municipalityCode = jsonNode.get("properties").get("postdistrikt_kode").asText();
 
 		} 
-		// else if (jsonNode.get("properties").has("region_kode")) {// "sogn_kode"
-		// municipalityCode = jsonNode.get("properties").get("region_kode").asText();
-		// }
+
 		street = streetName;
 		city = municipalityName;
 		name = streetName;

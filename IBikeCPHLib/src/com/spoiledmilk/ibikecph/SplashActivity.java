@@ -38,7 +38,6 @@ public class SplashActivity extends Activity {
 			timeout = getIntent().getExtras().getInt("timeout");
 		}
 
-		// new CopyTilesThread().start();
 
 	}
 

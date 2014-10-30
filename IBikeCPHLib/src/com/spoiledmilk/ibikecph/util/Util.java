@@ -138,9 +138,7 @@ public class Util {
             ret = "1 " + DISTANCE_KM_SHORT;
         }
         return ret;
-        // return meters > 1000.0f ? String.format(Locale.US, "%.1f %@", meters / 1000.0f, DISTANCE_KM_SHORT) :
-        // String.format(Locale.US,
-        // "%.0f %@", meters, DISTANCE_M_SHORT);
+
     }
 
     public static JsonNode stringToJsonNode(String jsonStr) {

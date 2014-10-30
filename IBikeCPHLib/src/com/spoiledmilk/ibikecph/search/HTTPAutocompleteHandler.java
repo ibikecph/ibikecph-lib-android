@@ -189,9 +189,6 @@ public class HTTPAutocompleteHandler {
 
 			urlString += "&vejnavn=*" + URLEncoder.encode(address.street, "UTF-8") + "*";
 
-			// urlString = "http://kortforsyningen.kms.dk/?servicename=RestGeokeys_v2&method=adresse&vejnavn=*"
-			// + URLEncoder.encode(address.street, "UTF-8") + "*";
-
 			if (!(address.number == null || address.number.equals(""))) {
 				urlString += "&husnr=" + address.number;
 			}

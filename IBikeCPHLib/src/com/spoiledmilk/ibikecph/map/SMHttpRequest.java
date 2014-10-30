@@ -160,9 +160,6 @@ public class SMHttpRequest {
                     // Route found
                     sendMsg(msgType, ri, listener);
 
-                // String response =
-                // "{\"version\": 0.3,\"status\":0,\"status_message\": \"Found route between points\",\"route_geometry\": \"swyrI}jpkAJu@RuAJq@PoALs@l@qEVgBn@qEJw@v@cGUMq@c@AAIEUOYSKG]USMCCYQCAi@]OK}@e@IEEC_@SIGSOIGOKcAk@MIqAy@XsBFe@NgARyARuAN_AJq@^aCFg@h@kD?Cn@yDFa@Lu@DoAu@Co@KKCUIQIOKOI]Y\",\"route_instructions\": [[\"10\",\"Dyrl�gevej\",109,0,26,\"109m\",\"E\",112],[\"1\",\"Kastanievej\",282,5,76,\"282m\",\"E\",111],[\"7\",\"H.C. �rsteds Vej\",368,10,97,\"368m\",\"N\",20],[\"3\",\"Forchhammersvej\",412,35,109,\"412m\",\"E\",112],[\"7\",\"Vodroffsvej\",124,50,19,\"124m\",\"N\",2],[\"15\",\"\",0,58,0,\"\",\"N\",0.0]],\"route_summary\":{\"total_distance\":1297,\"total_time\":347,\"start_point\":\"service\",\"end_point\":\"Vodroffsvej\"},\"alternative_geometries\": [],\"alternative_instructions\":[],\"alternative_summaries\":[],\"route_name\":[\"H.C. �rsteds Vej\",\"Forchhammersvej\"],\"alternative_names\":[[\"\",\"\"]],\"via_points\":[[55.67882,12.54079 ],[55.68029,12.55526 ]],\"hint_data\": {\"checksum\":1952171896, \"locations\": [\"V5xqALEAAABNAAAAAAAAAAAAAAAAAPA_ivVUAL8iEwB\", \"QEEpACEAAAAsAAAATQAAACl-jExyHNc_HfZUAGYoEwB\"]},\"transactionId\": \"OSRM Routing Engine JSON Descriptor (v0.3)\"}";
-
             }
         }).start();
     }

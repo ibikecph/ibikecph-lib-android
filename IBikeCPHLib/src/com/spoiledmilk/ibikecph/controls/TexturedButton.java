@@ -66,7 +66,6 @@ public class TexturedButton extends RelativeLayout {
 				Util.dp2px(1));
 		texture.setLayoutParams(params);
 		texture.setScaleType(ScaleType.FIT_XY);
-		// texture.setAlpha(140);
 		addView(texture);
 		text = new TextView(getContext());
 		params = new RelativeLayout.LayoutParams(

@@ -77,8 +77,6 @@ public class IbikePreferences {
             SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
             prefs.edit().putInt(PREFS_LANGUAGE, language.ordinal()).commit();
 
-            // for (OnSettingsChangeListener listener : listeners)
-            // listener.onLanguageChange(language);
         }
     }
 

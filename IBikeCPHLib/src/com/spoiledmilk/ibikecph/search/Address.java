@@ -18,9 +18,7 @@ class Address {
 
 	public boolean isAddress() {
 		boolean ret = false;
-		// if ( number != null && !number.equals("") && !number.equals("1")){
-		// ret = true;
-		// }
+
 		if ((zip != null && !zip.equals("")) || (number != null && !number.equals(""))
 				|| (street != null && city != null && !street.equals("") && !city.equals("") && !city.equals(street))) {
 			ret = true;

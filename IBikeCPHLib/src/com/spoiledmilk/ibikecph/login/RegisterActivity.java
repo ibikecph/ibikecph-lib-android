@@ -212,12 +212,6 @@ public class RegisterActivity extends Activity implements ImagerPrefetcherListen
         dialog.show();
     }
 
-    // "email_blank" = "Email can't be blank";
-    // "name_blank" = "Name can't be blank";
-    // "password_blank" = "Password can't be blank";
-    // "password_confirm_blank" = "Password confirmation can't be blank";
-    // "password_short" = "Password is too short (minimum is 3 characters)";
-
     private boolean validateInput() {
         boolean ret = true;
         if (textName.getText().toString().length() == 0) {
