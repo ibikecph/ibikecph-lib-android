@@ -1,6 +1,7 @@
 ##README
 
 Library project created to be used with I Bike CPH and CykelPlanen applications.
+Branch develop should be used.
 
 ##Dependent Libraries
 
