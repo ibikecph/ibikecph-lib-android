@@ -91,45 +91,6 @@ public class AboutActivity extends Activity {
 		} catch (Exception e) {
 		}
 
-		// new Thread(new Runnable() {
-		// @Override
-		// public void run() {
-		// String urlString = "https://rink.hockeyapp.net/api/2/apps/" + MapActivity.HOCKEY_APP_ID + "/app_versions";
-		// JsonNode ret = null;
-		// LOG.d("GET api request, url = " + urlString);
-		// HttpParams myParams = new BasicHttpParams();
-		// HttpConnectionParams.setConnectionTimeout(myParams, 20000);
-		// HttpConnectionParams.setSoTimeout(myParams, 20000);
-		// HttpClient httpclient = new DefaultHttpClient(myParams);
-		// HttpGet httpget = null;
-		//
-		// URL url = null;
-		//
-		// try {
-		//
-		// url = new URL(urlString);
-		// httpget = new HttpGet(url.toString());
-		// httpget.setHeader("Content-type", "application/json");
-		// httpget.setHeader("X-HockeyAppToken", "de2dc9b834364fa1b701905faf8e6863");
-		// HttpResponse response = httpclient.execute(httpget);
-		// String serverResponse = EntityUtils.toString(response.getEntity());
-		// LOG.d("API response = " + serverResponse);
-		// ret = Util.stringToJsonNode(serverResponse);
-		// long timestamp = ret.get("app_versions").get(0).get("timestamp").asLong();
-		// final Date date = new Date(timestamp * 1000);
-		// AboutActivity.this.runOnUiThread(new Runnable() {
-		// @Override
-		// public void run() {
-		// ((TextView) findViewById(R.id.textBuild)).setText("Build: " + date.toString());
-		// }
-		// });
-		// } catch (Exception e) {
-		// if (e != null && e.getLocalizedMessage() != null)
-		// LOG.e(e.getLocalizedMessage());
-		// }
-		//
-		// }
-		// }).start();
 	}
 
 }
