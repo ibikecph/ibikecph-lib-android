@@ -20,6 +20,8 @@ public class Config {
 	public static final String OSRM_SERVER_FAST = "http://routes.ibikecph.dk/v1.1/fast";
 	public static final String OSRM_SERVER_GREEN = "http://routes.ibikecph.dk/v1.1/green";
 	public static final String OSRM_SERVER_CARGO = "http://routes.ibikecph.dk/v1.1/cargo";
+	
+	public static boolean GREEN_ROUTES_ENABLED = true;
 
     public static final double GEOMETRY_DIGITS_LATITUDE = 1e6;
     public static final double GEOMETRY_DIGITS_LONGITUDE = 1e6;
@@ -36,4 +38,6 @@ public class Config {
 	public static final String HOCKEY_APP_ID = "f145bf4833683cfaa1744bf799eee64b";
 	public static final boolean HOCKEY_UPDATES_ENABLED = true;
 	public static final boolean ANALYTICS_ENABLED = false;
+	
+	public static boolean EXTENDED_PULL_TOUCH = true;
 }

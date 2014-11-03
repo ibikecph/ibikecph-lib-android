@@ -101,7 +101,9 @@ public class SMRouteNavigationActivity extends FragmentActivity implements View.
         textRecalculating = (TextView) findViewById(R.id.textRecalculating);
         textBicycle = (TextView) findViewById(R.id.textBicycle);
         textCargo = (TextView) findViewById(R.id.textCargo);
-        textGreen = (TextView) findViewById(R.id.textGreen);
+		if (Config.GREEN_ROUTES_ENABLED) {
+			textGreen = (TextView) findViewById(R.id.textGreen);
+		}
         FrameLayout.LayoutParams rootParams = new FrameLayout.LayoutParams((int) (9 * Util.getScreenWidth() / 5),
                 FrameLayout.LayoutParams.MATCH_PARENT);
         findViewById(R.id.root_layout).setLayoutParams(rootParams);
@@ -132,12 +134,14 @@ public class SMRouteNavigationActivity extends FragmentActivity implements View.
         btnClose = ((ImageButton) findViewById(R.id.btnClose));
         btnClose.setOnClickListener(this);
         btnClose.setOnTouchListener(this);
-        // increased touch area for the normal pull handle
-        pullTouchNormal = findViewById(R.id.viewPullTouchNormalExtended);
-        pullTouchNormal.setOnTouchListener(this);
-        // increased touch area for the max pull handle
-        viewPullTouchMaxExtended = findViewById(R.id.viewPullTouchMaxExtended);
-        viewPullTouchMaxExtended.setOnTouchListener(this);
+		if (Config.EXTENDED_PULL_TOUCH) {
+			// increased touch area for the normal pull handle
+			pullTouchNormal = findViewById(R.id.viewPullTouchNormalExtended);
+			pullTouchNormal.setOnTouchListener(this);
+			// increased touch area for the max pull handle
+			viewPullTouchMaxExtended = findViewById(R.id.viewPullTouchMaxExtended);
+			viewPullTouchMaxExtended.setOnTouchListener(this);
+		}
         mapTopDisabledView = findViewById(R.id.mapTopDisabledView);
         instructionsView = (RelativeLayout) findViewById(R.id.instructionsView);
         instructionsView.setBackgroundColor(Color.BLACK);
@@ -216,7 +220,9 @@ public class SMRouteNavigationActivity extends FragmentActivity implements View.
 		textBicycle.setTextColor(getResources().getColor(R.color.White));
 		
 		setCargoContainerInactive();
-		setGreenContainerInactive();
+		if (Config.GREEN_ROUTES_ENABLED) {
+			setGreenContainerInactive();
+		}
 		
 		Config.OSRM_SERVER = Config.OSRM_SERVER_FAST;
 		getRouteForNewBicycleType();
@@ -232,7 +238,9 @@ public class SMRouteNavigationActivity extends FragmentActivity implements View.
 		textCargo.setTextColor(getResources().getColor(R.color.White));
 		
 		setBicycleContainerInactive();
-		setGreenContainerInactive();
+		if (Config.GREEN_ROUTES_ENABLED) {
+			setGreenContainerInactive();
+		}
 		
 		Config.OSRM_SERVER = Config.OSRM_SERVER_CARGO;
 		getRouteForNewBicycleType();
@@ -326,9 +334,12 @@ public class SMRouteNavigationActivity extends FragmentActivity implements View.
         textCargo.setText(IbikeApplication.getString("bike_type_2"));
         textCargo.setTextColor(getResources().getColor(R.color.TextLightGrey));
         textCargo.setTypeface(IbikeApplication.getNormalFont());
-        textGreen.setText(IbikeApplication.getString("bike_type_3"));
-		textGreen.setTextColor(getResources().getColor(R.color.TextLightGrey));
-		textGreen.setTypeface(IbikeApplication.getNormalFont());
+		if (Config.GREEN_ROUTES_ENABLED) {
+			textGreen.setText(IbikeApplication.getString("bike_type_3"));
+			textGreen.setTextColor(getResources().getColor(
+					R.color.TextLightGrey));
+			textGreen.setTypeface(IbikeApplication.getNormalFont());
+		}
         textBicycle.setText(IbikeApplication.getString("bike_type_1"));
         textBicycle.setTypeface(IbikeApplication.getNormalFont());
         textGoodRide.setText(IbikeApplication.getString("good_ride"));
@@ -378,7 +389,9 @@ public class SMRouteNavigationActivity extends FragmentActivity implements View.
     public void onPause() {
         super.onPause();
         instructionList.setAdapter(null);
-        findViewById(R.id.viewListDarkOverlay).setVisibility(View.GONE);
+		if (Config.EXTENDED_PULL_TOUCH) {
+			findViewById(R.id.viewListDarkOverlay).setVisibility(View.GONE);
+		}
         findViewById(R.id.normalDarkOverlay).setVisibility(View.GONE);
         findViewById(R.id.normalProgressBar).setVisibility(View.GONE);
         findViewById(R.id.progressBar).setVisibility(View.GONE);
@@ -388,8 +401,10 @@ public class SMRouteNavigationActivity extends FragmentActivity implements View.
         instructionList.smoothScrollToPosition(0);
         if (newState == InstrcutionViewState.Maximized) {
             instructionList.setVerticalScrollBarEnabled(true);
-            viewPullTouchMaxExtended.setVisibility(View.VISIBLE);
-            pullTouchNormal.setVisibility(View.GONE);
+			if (Config.EXTENDED_PULL_TOUCH) {
+				viewPullTouchMaxExtended.setVisibility(View.VISIBLE);
+				pullTouchNormal.setVisibility(View.GONE);
+			}
             mapTopDisabledView.setVisibility(View.VISIBLE);
             instructionsViewMax.setLayoutParams(paramsInstructionsMaxMaximized);
             instructionsView.setVisibility(View.VISIBLE);
@@ -401,8 +416,10 @@ public class SMRouteNavigationActivity extends FragmentActivity implements View.
             }
             darkenedView.getBackground().setAlpha(200);
         } else if (newState == InstrcutionViewState.Normal) {
-            viewPullTouchMaxExtended.setVisibility(View.GONE);
-            pullTouchNormal.setVisibility(View.VISIBLE);
+			if (Config.EXTENDED_PULL_TOUCH) {
+				viewPullTouchMaxExtended.setVisibility(View.GONE);
+				pullTouchNormal.setVisibility(View.VISIBLE);
+			}
             mapTopDisabledView.setVisibility(View.GONE);
             instructionsViewMax.setLayoutParams(paramsInstructionsMaxNormal);
             instructionsView.setVisibility(View.VISIBLE);
@@ -421,8 +438,11 @@ public class SMRouteNavigationActivity extends FragmentActivity implements View.
             paramsBtnTrack.addRule(RelativeLayout.ABOVE, instructionsView.getId());
             btnTrack.setLayoutParams(paramsBtnTrack);
         } else if (newState == InstrcutionViewState.Minimized) {
-            viewPullTouchMaxExtended.setVisibility(View.GONE);
-            pullTouchNormal.setVisibility(View.GONE);
+			if (Config.EXTENDED_PULL_TOUCH) {
+				viewPullTouchMaxExtended.setVisibility(View.GONE);
+				pullTouchNormal.setVisibility(View.GONE);
+				 imageButtonPullHandleMin.setVisibility(View.VISIBLE);
+			}
             mapTopDisabledView.setVisibility(View.GONE);
             instructionsViewMax.setLayoutParams(paramsInstructionsMaxMinimized);
             darkenedView.setVisibility(View.GONE);
@@ -433,7 +453,7 @@ public class SMRouteNavigationActivity extends FragmentActivity implements View.
             }
             instructionsView.setVisibility(View.GONE);
             instructionsViewMax.setVisibility(View.GONE);
-            imageButtonPullHandleMin.setVisibility(View.VISIBLE);
+           
             RelativeLayout.LayoutParams paramsBtnTrack = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
                     RelativeLayout.LayoutParams.WRAP_CONTENT);
             paramsBtnTrack.setMargins(Util.dp2px(10), Util.dp2px(10), Util.dp2px(10), Util.dp2px(10));
@@ -442,8 +462,11 @@ public class SMRouteNavigationActivity extends FragmentActivity implements View.
             paramsBtnTrack.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
             btnTrack.setLayoutParams(paramsBtnTrack);
         } else if (newState == InstrcutionViewState.Invisible) {
-            viewPullTouchMaxExtended.setVisibility(View.GONE);
-            pullTouchNormal.setVisibility(View.GONE);
+			if (Config.EXTENDED_PULL_TOUCH) {
+				viewPullTouchMaxExtended.setVisibility(View.GONE);
+				pullTouchNormal.setVisibility(View.GONE);
+				imageButtonPullHandleMin.setVisibility(View.GONE);
+			}
             mapTopDisabledView.setVisibility(View.GONE);
             instructionsViewMax.setLayoutParams(paramsInstructionsMaxNormal);
             darkenedView.setVisibility(View.GONE);
@@ -454,7 +477,7 @@ public class SMRouteNavigationActivity extends FragmentActivity implements View.
             }
             instructionsView.setVisibility(View.GONE);
             instructionsViewMax.setVisibility(View.GONE);
-            imageButtonPullHandleMin.setVisibility(View.GONE);
+           
         }
         instructionsViewState = newState;
     }
@@ -534,7 +557,10 @@ public class SMRouteNavigationActivity extends FragmentActivity implements View.
 
     public void showProgressBar() {
         if (instructionsViewState == InstrcutionViewState.Maximized) {
-            findViewById(R.id.viewListDarkOverlay).setVisibility(View.VISIBLE);
+			if (Config.EXTENDED_PULL_TOUCH) {
+				findViewById(R.id.viewListDarkOverlay).setVisibility(
+						View.VISIBLE);
+			}
             progressBar.setVisibility(View.VISIBLE);
             textRecalculating.setVisibility(View.VISIBLE);
         } else if (instructionsViewState == InstrcutionViewState.Normal) {
@@ -544,7 +570,9 @@ public class SMRouteNavigationActivity extends FragmentActivity implements View.
     }
 
     public void hideProgressBar() {
-        findViewById(R.id.viewListDarkOverlay).setVisibility(View.GONE);
+		if (Config.EXTENDED_PULL_TOUCH) {
+			findViewById(R.id.viewListDarkOverlay).setVisibility(View.GONE);
+		}
         findViewById(R.id.normalDarkOverlay).setVisibility(View.GONE);
         findViewById(R.id.normalProgressBar).setVisibility(View.GONE);
         textRecalculating.setVisibility(View.GONE);
@@ -657,7 +685,9 @@ public class SMRouteNavigationActivity extends FragmentActivity implements View.
             mapFragment.mapView.setNoRendering(true);
             lastY = event.getY();
             instructionsView.setVisibility(View.INVISIBLE);
-            imageButtonPullHandleMin.setVisibility(View.INVISIBLE);
+			if (Config.EXTENDED_PULL_TOUCH) {
+				imageButtonPullHandleMin.setVisibility(View.INVISIBLE);
+			}
             instructionsViewMax.setVisibility(View.VISIBLE);
             darkenedView.setVisibility(View.VISIBLE);
             darkenedView.getBackground().setAlpha(Util.yToAlpha((int) event.getRawY()));
